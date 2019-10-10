@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+
+{% block page_content %}
+
+<nav class="navbar navbar-inverse navbar-fixed-top " style="background-color:brown">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">TDI Capstone</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="#">Home</a></li>
+	  <li><a href="#motivation">Motivation</a></li>
+      <li><a href="#analysis">Analysis</a></li>
+	  <li><a href="#goals">Goals/Deliverables</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="jumbotron" id="title" style="color:black">
+    <h1 align="center"> Better 911 </h1>
+    <p align="center"> Using data for a safer tomorrow! </p>
+</div>
+
+<div class="jumbotron" id="motivation" style="color:black">
+	<h1 align="center">Motivation</h1>
+</div>
+
+<div class="row" style="padding: 50px">
+	<h4> For my capstone project, I am going to analyse data of calls received by the 911, with the goal being, to model and predict emergencies
+	hotspots, based on the historic data. This analysis would be beneficial in the following ways.</h4>
+	<ul class="list-group">
+	<div class="panel-body"><li><h4> The city can better plan for future emergencies, basing locations for new fire stations, police stations and hospitals on areas with high 911 traffic. </h4></li></div>
+	<div class="panel-body"><li><h4> Emergency units can manage manpower more efficiently during different hours of the day or days of the week based on the likelihood of particular emergencies
+	during those periods. </h4></li></div>
+	<div class="panel-body"><li><h4> Residents of an area would become better aware of the emergencies and therefore be better prepared to avoid them (mainly crime related emergencies). </h4></li></div>
+	</ul>
+	<h4> As the data source I am currently using the city of Baltimore's '911 Police Calls for Service' database which contains over 6 million entries of 911 calls with data on date, time, location and text descriptions of emergencies in the city over the past 6 years.
+	<a href="https://data.baltimorecity.gov/Public-Safety/911-Police-Calls-for-Service/xviu-ezkt" target="_blank" class="btn btn-info" role="button">Data Source!</a></h4>
+</div>
+
+<div class="jumbotron" id="analysis" style="color:black">
+	<h1 align="center">Analysis</h1>
+</div>
+<div class="container">
+<div class="row" style="padding: 50px">
+    <iframe src="https://www.google.com/maps/d/embed?mid=1VB3xXMDgCL0ZccIuYbaaV29VfoU" width="800" height="600"></iframe>
+    <!-- <iframe frameborder='0' align="center" style='position: absolute; background: transparent; width: 60%; height:60%;' src="{{ url_for('show_map') }}" frameborder="0"></iframe>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>-->
+</div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6" style="padding: 50px">
+	<h4>
+	The dataset has 6,388,610 entries with 17 features. Although a few of these features like the 'RecordID' are not useful. There are also features like 'PoliceDistrict', 'District' and 'Neighborhood' which
+	essentially give the same information. We group our data by PoliceDistrict and check for fluctuations in the number of 911 calls from the these districts over 6 years. The goal is to get an idea as to whether
+	geographic location has any bearing on the number of emergencies there.
+	<br/> <br/>
+	Interestingly, the data shows very little temporal variation. Instead, what we see is a steady but different rate of 911 calls coming in from different districts. The simplest explanation could have been the
+	population/size of these districts, but that did not turn out to be the case. The 'Northeastern' district, right next to the 'Northern' district is also roughly the same size. Yet, there is a consistent 40%
+	higher rate of 911 calls coming in from that district. Curious, indeed!
+	<br/> <br/>
+	Note - I ignore the 2013 data being much less on account of it being the first year in the dataset and the data might not have been collected from the start of the year.
+	</h4>
+  </div>
+  <div class="col-sm-6" style="padding: 50px">
+      <a href="#plot1" id = "plot1" class="pop">
+	  <img src="{{url_for('static', filename='plot1.png')}}"  class="img-rounded" alt="Plot1" style="width:600px;height:600px;">
+      </a>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-6" style="padding: 50px">
+      <a href="#plot2" id = "plot2" class="pop">
+	<img src="{{url_for('static', filename='plot2.png')}}" class="img-rounded" alt="Plot2" style="width:600px;height:600px;">
+    </a>
+  </div>
+  <div class="col-sm-6" style="padding: 50px">
+	<h4> To make this the findings from the previous figure more apparent, I have a boxplot of the total number of 911 calls for the 9 districts given below, which better depicts the variation. We can see there is very
+	little variation in the calls coming from a district over the years.
+	</h4>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-sm-6" style="padding: 50px">
+	<h4>
+	Now, we try to go deeper into the contents of these calls. I have a word cloud of the 'Call Descriptions' displayed, which gives us an idea about the emergencies that occur most frequently in the city.
+	<br/> <br/>
+	The most common descriptions as it turns out, ignoring 'No voice', are 'disorderly' (conduct), 'traffic stop' and 'common assault'. Lets take a closer look at one of these.
+	</h4>
+  </div>
+  <div class="col-sm-6" style="padding: 50px">
+      <a href="#wordcloud" id = "wordcloud" class="pop">
+	<img src="{{url_for('static', filename='wordcloud.png')}}"  class="img-rounded" alt="Wordcloud" style="width:600px;height:600px;">
+    </a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6" style="padding: 50px">
+      <a href="#plot3" id = "plot3" class="pop">
+	<img src="{{url_for('static', filename='plot3.png')}}"  class="img-rounded" alt="Plot3" style="width:600px;height:600px;">
+    </a>
+  </div>
+  <div class="col-sm-6" style="padding: 50px">
+	<h4> We look at the calls about disorderly conduct only, grouping the data by district and look at a boxplot of the number of calls received in each district from 2013 to 2019.
+	<br/> <br/>
+	The results are considerable different than when we looked all the data. While the 'Northern' district received the most 911 calls overall, it is infact the 'Central' district that has faced
+	the issue of disorderly conduct more.
+	<br/> <br/>
+	Clearly, the frequency of 911 calls are related to the locations the calls are made from and the reason for making them.
+	</h4>
+  </div>
+</div>
+
+<div class="jumbotron" id="goals" style="color:black">
+	<h1 align="center">Goals/Deliverables</h1>
+</div>
+
+<div class="row" style="padding: 50px">
+	<h4> Here are some of the goals I would like to achieve by the end of this project.</h4>
+	<ul class="list-group">
+	<div class="panel-body"><li><h4> Be able to predict the level of risk for a particular location to various emergencies. </h4></li></div>
+	<div class="panel-body"><li><h4> Present the trained model on this web application with an interactive UI. </h4></li></div>
+	<div class="panel-body"><li><h4> Provide law enforcement and related personnel with the insights from the analysis so they can better manage their resources. </h4></li></div>
+	</ul>
+</div>
+
+
+<footer class="container-fluid text-center">
+  <p>Created By Romir Moza</p>
+</footer>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" data-dismiss="modal">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+             <img src="" class="imagepreview" style="width: 100%;height: 100%" >
+        </div>
+     <div class="modal-footer">
+       <div class="col-xs-12">
+           <p class="text-left">1. line of description<br>2. line of description <br>3. line of description</p>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+{% endblock %}

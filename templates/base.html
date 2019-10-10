@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+		<title>Capstone project</title>
+
+		<style>
+		body {
+		padding-top: 70px;
+		background-color: black;
+		color: white;
+		font-family: 'Lato', sans-serif;
+		}
+		</style>
+
+	</head>
+
+	<body>
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+        <script>
+            $(function() {
+            		$('.pop').on('click', function() {
+            			$('.imagepreview').attr('src', $(this).find('img').attr('src'));
+            			$('#imagemodal').modal('show');
+            		});
+            });
+        </script>
+
+		{% block page_content %}
+
+		{% endblock %}
+	</body>
+</html>

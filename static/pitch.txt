@@ -1,0 +1,21 @@
+Hi everyone, let me start by introducing myself. My name is Romir Moza. I have a Masters in Mechanical Engg. from The University of Texas at Austin. My research primarily concerned with building parallel algorithms for fluid flow problems and to run them on our supercomputing system at UT.
+
+Now, for my capstone project, I decided to work on the problem of emergency response for the city of Baltimore. As you might know, Baltimore has one of the highest crime rates per capita in the country. About 3 months ago even Baltimore Police Commissioner Michael Harrison talked about their new plan which is meant to reduces crime in the city. Since what he talked about was mostly qualitative strategies to deal with the situation, I figured it would highly beneficial to the law enforcement in the city to look at data for analytical quantitative/analytical insights.
+
+This is my app! Better 911!
+
+The motivation I already talked about a bit, it is to provide quantitative insight, but what might it look like? I want this application to be able to model and predict emergencies hotspots, so the city can better allocation resources, be it man power, infrastructure, vehicles, what have you, to the more critical areas in the city.
+
+The primary dataset I am working on, is the 911 caller data from the city's website. Its 911 calls made in the city in the last 6 years, along with the reason for the call, a date and time stamp, and the location.
+Here is a better visualization of the problem. What you see here is a map of Baltimore with boundaries indicating its 9 police districts and the markers being the district police stations.
+
+For some preliminary EDA, I group my data into these 9 districts and aggregate incidents for each year. You'll see in this figure that the temporal variation of the data is minimal over over 6 years. You can see it better in the box plot. Might I add the data begins in June of the first year which is why that year has half the incidents of the rest.
+
+In the interest of time, I am going to skip these plots and talk about my predictive model next.
+
+I have tried multiple linear models (ridge, lasso) to try and learn the frequency of incidents given location. The results are "fair". I am able to achieve a reasonable R^2 of 0.2 for the limited amount of features I'm using and the simplicity of the model. This suggests a degree of underfitting which either needs more data or more complex models.
+Right now I am in the process of building another pipeline to take weather data for the dates in my dataset into the model, since weather has been shown to correlate with crime rates by many studies. In fact, there is a real concern about climate change leading to more crime in the world, which I find comical. I get the data from NCDC's API.
+
+My next steps will be to use that augmented dataset with the linear models and to apply more complicated models to the data.
+
+Thanks.
