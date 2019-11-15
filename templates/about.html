@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+
+{% block page_content %}
+
+<div class="jumbotron" id="motivation" style="color:black">
+	<h1 align="center">Motivation</h1>
+</div>
+
+<div class="row" style="padding: 50px">
+	<h4> For my capstone project, I analysed data of calls received by the 911 hotline in the City of Baltimore, with the goal of modeling and predicting emergencies based on caller's information. This analysis is beneficial in the following ways.</h4>
+	<ul class="list-group">
+	<div class="panel-body"><li><h4> The city can better plan for future emergencies, basing locations for new fire stations, police stations and hospitals on areas with high 911 traffic. </h4></li></div>
+	<div class="panel-body"><li><h4> Emergency units can manage manpower more efficiently during different weeks of the year based on the likelihood of particular emergencies during those periods. </h4></li></div>
+	<div class="panel-body"><li><h4> Residents of an area can become better aware of the emergencies and therefore be better prepared to avoid them (mainly criminal emergencies). </h4></li></div>
+	</ul>
+	<h4>
+    As the data source I am using the city of Baltimore's '911 Police Calls for Service' database which contains over 6 million entries of 911 calls with data on date, time, location and text descriptions of emergencies in the city for the past 6 years.
+	<a href="https://data.baltimorecity.gov/Public-Safety/911-Police-Calls-for-Service/xviu-ezkt" target="_blank" class="btn btn-info" role="button">Data Source!</a></h4>
+</div>
+
+<div class="jumbotron" id="regression-model" style="color:black">
+	<h1 align="center">Regression Model</h1>
+</div>
+
+<div class="row" style="padding: 50px">
+	<h4>We implement a machine learning pipeline to learn call counts from the data, based on the date, location and priority of the call. We group the data by week, and look at the weekly count of emergencies. </h4>
+	<ul class="list-group">
+	<div class="panel-body"><li><h4> We perform cross validation over Linear models - Ridge and Lasso, a Non-linear/Non-parametric model - KNearestNeighbors and an emsemble model - RandomForestRegressor and choose the best fit for the data. </h4></li></div>
+	<div class="panel-body"><li><h4> The RandomForestRegressor model performs the best for our problem, with a CV score of 0.95. </h4></li></div>
+	</ul>
+</div>
+
+{% endblock %}
